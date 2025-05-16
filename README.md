@@ -40,8 +40,6 @@ Im Rahmen der Lehrveranstaltung *Datenstrukturen und Algorithmen* wurde eine Gru
 - **Aufgaben:**  
   - Erstellen eines Java-Testprogramms für alle 4 Strukturen  
   - Strukturieren und Hochladen im GitHub-Repository  
-  - Einladung des Lehrenden (`dirkmartin`)  
-  - Vorbereitungen für Präsentation und Review
 
 ---
 
