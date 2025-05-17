@@ -3,10 +3,6 @@
 ## 📌 Aufgabenstellung
 
 Im Rahmen der Lehrveranstaltung *Datenstrukturen und Algorithmen* wurde eine Gruppenaufgabe gestellt, bei der wir die Datenstrukturen **Stack** und **Queue** sowohl mit Arrays als auch mit verketteten Listen in Java implementieren.
-
-**Abgabedatum:** 20. Mai 2025  
-**Abgabe über GitHub** – Einladung an: `dirkmartin`
-
 ---
 
 ## 👨‍💻 Team & Aufgabenverteilung
