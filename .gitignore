@@ -1,0 +1,6 @@
+/target/
+/.idea/
+*.class
+*.log
+Log/
+.html
