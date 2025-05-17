@@ -1,53 +1,52 @@
 package at.fhj.msd;
 
-public class MyStackList<E> {
-    private Node<E> head;
+public class MyStackArray<E> {
+    private E[] data;
+    private int top;
 
-    // Inner node class
-    private static class Node<E> {
-        E data;
-        Node<E> next;
-
-        Node(E data) {
-            this.data = data;
-            this.next = null;
-        }
+    @SuppressWarnings("unchecked")
+    public MyStackArray() {
+        data = (E[]) new Object[10]; // initial capacity = 10
+        top = 0;
     }
 
-    public MyStackList() {
-        head = null;
-    }
-
-    // Calculates the number of elements by iteration
+    // Returns the number of elements in the stack
     public int size() {
-        int count = 0;
-        Node<E> current = head;
-        while (current != null) {
-            count++;
-            current = current.next;
-        }
-        return count;
+        return top;
     }
 
     // Checks if the stack is empty
     public boolean isEmpty() {
-        return head == null;
+        return top == 0;
     }
 
-    // Adds element on top
+    // Pushes an element on top of the stack
     public void push(E element) {
-        Node<E> node = new Node<>(element);
-        node.next = head;
-        head = node;
+        if (top == data.length) {
+            resize(); // double the array size when full
+        }
+        data[top] = element;
+        top++;
     }
 
-    // Removes and returns the top element
+    // Removes and returns the top element of the stack
     public E pop() {
         if (isEmpty()) {
             return null;
         }
-        E value = head.data;
-        head = head.next;
+        top--;
+        E value = data[top];
+        data[top] = null; // free memory
         return value;
+    }
+
+    // Resizes the internal array (doubles its size)
+    @SuppressWarnings("unchecked")
+    private void resize() {
+        E[] newData = (E[]) new Object[data.length * 2];
+        for (int i = 0; i < data.length; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 }
