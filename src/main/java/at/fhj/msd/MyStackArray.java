@@ -1,31 +1,44 @@
 package at.fhj.msd;
-public class MyStackArray<E> {
-    private E[] data;
-    private int top;
 
-    @SuppressWarnings("unchecked")
-    public MyStackArray() {
-        data = (E[]) new Object[10]; // Initial size = 10
-        top = 0;
+public class MyStackList<E> {
+    private Node<E> head;
+
+    // Inner node class
+    private static class Node<E> {
+        E data;
+        Node<E> next;
+
+        Node(E data) {
+            this.data = data;
+            this.next = null;
+        }
     }
 
-    // Returns the number of elements
+    public MyStackList() {
+        head = null;
+    }
+
+    // Calculates the number of elements by iteration
     public int size() {
-        return top;
+        int count = 0;
+        Node<E> current = head;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
     }
 
     // Checks if the stack is empty
     public boolean isEmpty() {
-        return top == 0;
+        return head == null;
     }
 
     // Adds element on top
     public void push(E element) {
-        if (top == data.length) {
-            resize();
-        }
-        data[top] = element;
-        top++;
+        Node<E> node = new Node<>(element);
+        node.next = head;
+        head = node;
     }
 
     // Removes and returns the top element
@@ -33,19 +46,8 @@ public class MyStackArray<E> {
         if (isEmpty()) {
             return null;
         }
-        top--;
-        E value = data[top];
-        data[top] = null;
+        E value = head.data;
+        head = head.next;
         return value;
-    }
-
-    // Doubles the array size when full
-    @SuppressWarnings("unchecked")
-    private void resize() {
-        E[] bigger = (E[]) new Object[data.length * 2];
-        for (int i = 0; i < data.length; i++) {
-            bigger[i] = data[i];
-        }
-        data = bigger;
     }
 }

@@ -1,7 +1,7 @@
 package at.fhj.msd;
+
 public class MyStackList<E> {
     private Node<E> head;
-    private int size;
 
     // Inner node class
     private static class Node<E> {
@@ -16,12 +16,17 @@ public class MyStackList<E> {
 
     public MyStackList() {
         head = null;
-        size = 0;
     }
 
-    // Returns number of elements
+    // Calculates and returns the number of elements
     public int size() {
-        return size;
+        int count = 0;
+        Node<E> current = head;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
     }
 
     // Checks if the stack is empty
@@ -29,12 +34,11 @@ public class MyStackList<E> {
         return head == null;
     }
 
-    // Adds element on top
+    // Adds an element to the top of the stack
     public void push(E element) {
         Node<E> node = new Node<>(element);
         node.next = head;
         head = node;
-        size++;
     }
 
     // Removes and returns the top element
@@ -44,7 +48,6 @@ public class MyStackList<E> {
         }
         E value = head.data;
         head = head.next;
-        size--;
         return value;
     }
 }
