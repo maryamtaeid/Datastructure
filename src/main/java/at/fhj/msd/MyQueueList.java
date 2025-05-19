@@ -1,5 +1,5 @@
 package at.fhj.msd;
- 
+
 public class MyQueueList<E> {
     private Node<E> front;  // Points to the front of the queue
     private Node<E> rear; // Points to the rear of the queue
@@ -50,6 +50,9 @@ public class MyQueueList<E> {
      * @param element the element to be added
      */
     public void put(E element) {
+        if (element == null) {
+        throw new NullPointerException("Null elements not allowed");
+        }
         Node<E> node = new Node<>(element);
         if (isEmpty()) {
             front = rear = node; // First element in the queue

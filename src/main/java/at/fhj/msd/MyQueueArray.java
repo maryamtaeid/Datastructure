@@ -31,6 +31,9 @@ public class MyQueueArray<E> {
  
     // Adds element at the end of the queue
     public void put(E element) {
+        if (element == null) {
+        throw new NullPointerException("Null elements not allowed");
+        }
         if (isFull()) {
             resize(); // Resize the array if it's full
         }
